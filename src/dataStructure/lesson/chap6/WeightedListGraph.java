@@ -45,8 +45,8 @@ public class WeightedListGraph implements WeightedGraph {
 	@Override
 	public Iterable<Edge> adj(int v) {
 		ArrayList<Edge> list = new ArrayList<>();
-			for (int v = 0; v < size; v++) {
-			for (Edge e: adj[v]) if (e.from == v)
+			for (int v1 = 0; v1 < size; v1++) {
+			for (Edge e: adj[v1]) if (e.from == v1)
 			list.add(e);
 		}
 		return list;

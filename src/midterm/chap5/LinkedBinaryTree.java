@@ -1,5 +1,8 @@
 package midterm.chap5;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinkedBinaryTree<E> {
 	protected TreeNode<E> root = null;
 	protected int size = 0;
@@ -13,6 +16,12 @@ public class LinkedBinaryTree<E> {
 	
 	public TreeNode<E> root() {
 		return this.root;
+	}
+	public TreeNode<E> left(TreeNode<E> p) {
+		return p.getLeft();
+	}
+	public TreeNode<E> right(TreeNode<E> p) {
+		return p.getRight();
 	}
 	
 	public TreeNode<E> addRoot(E e) {
@@ -54,4 +63,18 @@ public class LinkedBinaryTree<E> {
 		p.setElement(newValue);
 		return oldValue;
 	}
+	
+	public List<TreeNode<E>> inorder() {
+		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+		inorderSubtree(root(), result);
+		return result;
+	}
+	private void inorderSubtree(TreeNode<E> p, List<TreeNode<E>> result) {
+		if (p != null) {
+			inorderSubtree(left(p), result);
+			result.add(p);
+			inorderSubtree(right(p), result);
+		}
+	}
+	
 }

@@ -77,4 +77,30 @@ public class LinkedBinaryTree<E> {
 		}
 	}
 	
+	public List<TreeNode<E>> preorder() {
+		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+		preorderSubtree(root(), result);
+		return result;
+	}
+	private void preorderSubtree(TreeNode<E> p, List<TreeNode<E>> result) {
+		if (p != null) {
+			result.add(p);
+			preorderSubtree(left(p), result);
+			preorderSubtree(right(p), result);
+		}
+	}
+	
+	public List<TreeNode<E>> postorder() {
+		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+		postorderSubtree(root(), result);
+		return result;
+	}
+	private void postorderSubtree(TreeNode<E> p, List<TreeNode<E>> result) {
+		if (p != null) {
+			postorderSubtree(left(p), result);
+			postorderSubtree(right(p), result);
+			result.add(p);
+		}
+	}
+	
 }

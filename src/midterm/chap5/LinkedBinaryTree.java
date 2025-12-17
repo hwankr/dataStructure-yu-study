@@ -144,21 +144,6 @@ public class LinkedBinaryTree<E> {
 		return result;
 	}
 	
-//	public LinkedBinaryTree<E> copy() {
-//		LinkedBinaryTree<E> dup = new LinkedBinaryTree<>();
-//		if (root != null) dup.root = copy(root);
-//		return dup;
-//	}
-//	public TreeNode<E> copy(TreeNode<E> original) {
-//		if (original != null) {
-//			TreeNode<E> temp = new TreeNode<E>(original.getElement());
-//			temp.setLeft(copy(original.getLeft()));
-//			temp.setRight(copy(original.getRight()));
-//			return temp;
-//		}
-//		return null;
-//	}
-	
 	public LinkedBinaryTree<E> copy() {
 		LinkedBinaryTree<E> dup = new LinkedBinaryTree<>();
 		if (root != null) dup.root = copy(root);
@@ -174,4 +159,19 @@ public class LinkedBinaryTree<E> {
 		return null;
 	}
 	
+//	public boolean equalTo(LinkedBinaryTree<E> other) {
+//		return equal(root, other.root);
+//	}
+//	private boolean equal(TreeNode<E> first, TreeNode<E> second) {
+//		return ((first == null && second == null) || (first != null && second != null && first.getElement().equals(second.getElement()) && 
+//				equal(first.getLeft(), second.getLeft()) && equal(first.getRight(), second.getRight())));
+//	}
+	
+	public boolean equalTo(LinkedBinaryTree<E> other) {
+		return equal(root, other.root);
+	}
+	private boolean equal(TreeNode<E> first, TreeNode<E> second) {
+		return ((first == null && second == null) || (first != null && second != null && first.getElement().equals(second.getElement())
+				&& equal(first.getLeft(), second.getLeft()) && equal(first.getRight(), second.getRight())));
+	}
 }

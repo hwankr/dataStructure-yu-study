@@ -2,6 +2,9 @@ package midterm.chap5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+
+import dataStructure.chap5.LinkedStack;
 
 public class LinkedBinaryTree<E> {
 	protected TreeNode<E> root = null;
@@ -103,4 +106,41 @@ public class LinkedBinaryTree<E> {
 		}
 	}
 	
+//	public List<TreeNode<E>> iterativeInorder() {
+//		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+//		Stack<TreeNode<E>> stack = new Stack<>();
+//		TreeNode<E> p = root();
+//		
+//		while (true) {
+//			while (p != null) {
+//				stack.push(p);
+//				p = p.getLeft();
+//			}
+//			if (stack.isEmpty()) break;
+//			
+//			p = stack.pop();
+//			result.add(p);
+//			p = right(p);
+//		}
+//		return result;
+//	}
+	
+	public List<TreeNode<E>> iterativeInorder() {
+		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+		Stack<TreeNode<E>> stack = new Stack<>();
+		TreeNode<E> p = root;
+		
+		while (true) {
+			while (p != null) {
+				stack.push(p);
+				p = p.getLeft();
+			}
+			if (stack.isEmpty()) break;
+			
+			p = stack.pop();
+			result.add(p);
+			p = p.getRight();
+		}
+		return result;
+	}
 }

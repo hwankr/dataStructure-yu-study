@@ -177,4 +177,12 @@ public class LinkedBinaryTree<E> {
 		}
 		return 0;
 	}
+
+	public int height(TreeNode<E> tree) {
+		return heightSub(tree);
+	}
+	private int heightSub(TreeNode<E> root) {
+		if (root == null) return 0;
+		else return Math.max(heightSub(root.getLeft()), heightSub(root.getRight()));
+	}
 }

@@ -21,7 +21,7 @@ public class TestDriver {
 
         // inorder 출력
         System.out.print("Inorder: ");
-        for (TreeNode<String> node : tree.inorder()) {
+        for (TreeNode<String> node : tree.levelOrder()) {
             System.out.print(node.getElement() + " ");
         }
         System.out.println();

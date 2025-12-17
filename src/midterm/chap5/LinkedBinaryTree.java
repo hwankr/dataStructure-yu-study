@@ -159,19 +159,22 @@ public class LinkedBinaryTree<E> {
 		return null;
 	}
 	
-//	public boolean equalTo(LinkedBinaryTree<E> other) {
-//		return equal(root, other.root);
-//	}
-//	private boolean equal(TreeNode<E> first, TreeNode<E> second) {
-//		return ((first == null && second == null) || (first != null && second != null && first.getElement().equals(second.getElement()) && 
-//				equal(first.getLeft(), second.getLeft()) && equal(first.getRight(), second.getRight())));
-//	}
-	
 	public boolean equalTo(LinkedBinaryTree<E> other) {
 		return equal(root, other.root);
 	}
 	private boolean equal(TreeNode<E> first, TreeNode<E> second) {
 		return ((first == null && second == null) || (first != null && second != null && first.getElement().equals(second.getElement())
 				&& equal(first.getLeft(), second.getLeft()) && equal(first.getRight(), second.getRight())));
+	}
+	
+	public int leafCount(TreeNode<E> tree) {
+		return leafCountSub(tree);
+	}
+	private int leafCountSub(TreeNode<E> root) {
+		if (root != null) {
+			if (root.getLeft() == null && root.getRight() == null) return 1;
+			else return leafCountSub(root.getLeft()) + leafCountSub(root.getRight());
+		}
+		return 0;
 	}
 }

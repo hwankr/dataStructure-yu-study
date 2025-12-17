@@ -1,7 +1,9 @@
 package midterm.chap5;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 import dataStructure.chap5.LinkedStack;
@@ -106,24 +108,6 @@ public class LinkedBinaryTree<E> {
 		}
 	}
 	
-//	public List<TreeNode<E>> iterativeInorder() {
-//		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
-//		Stack<TreeNode<E>> stack = new Stack<>();
-//		TreeNode<E> p = root();
-//		
-//		while (true) {
-//			while (p != null) {
-//				stack.push(p);
-//				p = p.getLeft();
-//			}
-//			if (stack.isEmpty()) break;
-//			
-//			p = stack.pop();
-//			result.add(p);
-//			p = right(p);
-//		}
-//		return result;
-//	}
 	
 	public List<TreeNode<E>> iterativeInorder() {
 		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
@@ -140,6 +124,22 @@ public class LinkedBinaryTree<E> {
 			p = stack.pop();
 			result.add(p);
 			p = p.getRight();
+		}
+		return result;
+	}
+	
+	public List<TreeNode<E>> levelOrder() {
+		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
+		Queue<TreeNode<E>> queue = new LinkedList<>();
+		
+		if (isEmpty()) return result;
+		queue.add(root);
+		while (true) {
+			if (queue.isEmpty()) break;
+			TreeNode<E> p = queue.poll();
+			result.add(p);
+			if (p.getLeft() != null) queue.add(p.getLeft());
+			if (p.getRight() != null) queue.add(p.getRight());
 		}
 		return result;
 	}

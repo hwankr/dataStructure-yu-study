@@ -130,17 +130,18 @@ public class LinkedBinaryTree<E> {
 	
 	public List<TreeNode<E>> levelOrder() {
 		List<TreeNode<E>> result = new ArrayList<TreeNode<E>>();
-		Queue<TreeNode<E>> queue = new LinkedList<>();
+		LinkedQueue<TreeNode<E>> queue = new LinkedQueue<>();
 		
 		if (isEmpty()) return result;
-		queue.add(root);
+		queue.enqueue(root);
 		while (true) {
 			if (queue.isEmpty()) break;
-			TreeNode<E> p = queue.poll();
+			TreeNode<E> p = queue.dequeue();
 			result.add(p);
-			if (p.getLeft() != null) queue.add(p.getLeft());
-			if (p.getRight() != null) queue.add(p.getRight());
+			if (p.getLeft() != null) queue.enqueue(p.getLeft());
+			if (p.getRight() != null) queue.enqueue(p.getRight());
 		}
 		return result;
 	}
+	
 }

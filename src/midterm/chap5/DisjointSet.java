@@ -36,4 +36,15 @@ public class DisjointSet {
     		parent[i] = temp;
     	}
     }
+    
+    public int collapsingFind(int i) {
+    	int node, next, root;
+    	
+    	for (root = i; parent[root] >= 0; root = parent[root]);
+    	for (node = i; node != root && parent[node] != root; node = next) {
+    		next = parent[node];
+    		parent[node] = root;
+    	}
+    	return root;
+    }
 }

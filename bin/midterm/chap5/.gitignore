@@ -6,3 +6,5 @@
 /ThreadedBinaryTree.class
 /Entry.class
 /PriorityQueue.class
+/HeapPriorityQueue.class
+/HeapPriorityQueue$PQEntry.class

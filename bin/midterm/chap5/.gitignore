@@ -10,3 +10,5 @@
 /HeapPriorityQueue$PQEntry.class
 /BST.class
 /BST$Node.class
+/UnionFind.class
+/DisjointSet.class

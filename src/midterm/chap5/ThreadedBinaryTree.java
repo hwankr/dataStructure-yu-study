@@ -26,4 +26,20 @@ public class ThreadedBinaryTree<E> {
 		}
 		return result;
 	}
+	
+	public void insertRight(ThreadedTreeNode<E> pParent, ThreadedTreeNode<E> pChild) {
+		ThreadedTreeNode<E> parent = pParent;
+		ThreadedTreeNode<E> child = pChild;
+		
+		child.right = parent.right;
+		child.rthread = parent.rthread;
+		child.left = parent;
+		child.lthread = true;
+		parent.right = child;
+		parent.rthread = false;
+		if (child.rthread == false) {
+			ThreadedTreeNode<E> temp = insucc(child);
+			temp.left = child;
+		}
+	}
 }

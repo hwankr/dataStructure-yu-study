@@ -61,6 +61,10 @@ public class FinalExam {
             System.out.print("문제 3(추가). Latest Time: [ ");
             findLatestTime(projectDuration);
             System.out.println("]");
+            
+         // 5. [추가됨] Connected Component
+            System.out.println("\n문제 4. 연결 요소 (Connected Components):");
+            System.out.println("총 연결 요소 개수: " + connectedComponent());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -159,5 +163,34 @@ public class FinalExam {
         for (int i = 0; i < N; i++) {
             System.out.print(latest[i] + " ");
         }
+    }
+    
+    static int connectedComponent() {
+    	List<Integer> L = new ArrayList<>();
+    	visited = new boolean[N];
+    	int count = 0;
+    	
+    	for (int i=0; i<N; i++) {
+    		if (!visited[i]) {
+    			count++;
+    			System.out.print(count+ ": ");
+    			dfsForCC(i, L);
+    			for (int k: L) {
+    				System.out.print(k + " ");
+    			}
+    			System.out.println();
+    			L.clear();
+    		}
+    	}
+    	return count;
+    }
+    
+    static void dfsForCC(int v, List<Integer> L) {
+    	visited[v] = true;
+    	L.add(v);
+    	
+    	for (Edge e: adjList[v]) {
+    		if (!visited[e.dest]) dfsForCC(e.dest, L);
+    	}
     }
 }

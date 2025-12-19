@@ -44,40 +44,16 @@ public class Problem1_MinHeap {
 
     // [TODO 1] 최소 힙 삽입 연산 (Up-heap bubbling)
     static void insertMinHeap(int data) {
-    	heap[++size] = data;
-    	int i = size;
     	
-    	while (i != 1 && data < heap[i/2]) {
-    		heap[i] = heap[i/2];
-    		i = i/2;
-    	}
-    	heap[i] = data;
     }
 
     // [TODO 2] 최소 힙 삭제 연산 (Down-heap bubbling)
     static int deleteMinHeap() {
-    	int answer = heap[1];
-    	int temp = heap[size--];
-    	int parent = 1;
-    	int child = 2;
-    	
-    	while (child <= size) {
-    		if (child < size && heap[child] > heap[child+1])
-    			child += 1;
-    		if (temp <= heap[child]) break;
-    		heap[parent] = heap[child];
-    		parent = child;
-    		child = child * 2;
-    	}
-    	heap[parent] = temp;
-    	return answer;
+
     }
 
     // [TODO 3] Inorder 순회 (Left -> Root -> Right)
     static void inorder(int i) {
-    	if (i > size) return;
-    	inorder(2*i);
-    	System.out.print(heap[i] + " ");
-    	inorder(2*i+1);
+
     }
 }

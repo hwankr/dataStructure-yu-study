@@ -1,4 +1,4 @@
-package examSol;
+package exam;
 
 import java.util.*;
 
@@ -13,12 +13,6 @@ public class InsertionSortExam {
 
     // [TODO] 강의자료 7장 스타일의 Insertion Sort 구현
     static void insertionSort(int[] a) {
-    	int i, j;
-        for (i = 1; i < a.length; i++) {
-            int next = a[i]; // 이번에 삽입할 값
-            for (j = i-1; j>=0 && next < a[j]; j--)
-            	a[j+1] = a[j];
-            a[j + 1] = next;
-        }
+
     }
 }
